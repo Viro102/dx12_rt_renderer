@@ -1,4 +1,6 @@
 #include <iostream>
+
+#include "DXInit.h"
 #include "Window.h"
 
 int main(int argc, char* argv[])
@@ -18,8 +20,9 @@ int main(int argc, char* argv[])
 
 		Sleep(10);
 	}
-
 	window.~Window();
+	DXInit dxInit;
+	dxInit.create();
 
 	return 0;
 }
