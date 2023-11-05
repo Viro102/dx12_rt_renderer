@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.26)
 project(toy_renderer)
 
 set(CMAKE_CXX_STANDARD 23)
-set(SOURCES ./src/Main.cpp)
+set(SOURCES src/Main.cpp)
 set(IMGUI_SOURCES
         ./imgui/imgui.cpp
         ./imgui/imgui_demo.cpp
