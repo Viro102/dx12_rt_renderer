@@ -1,13 +1,7 @@
 #include "Core/Window.h"
 
 int main() {
-    Window window;
-
-    MSG msg = {};
-    while (GetMessage(&msg, nullptr, 0, 0)) {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
-
+    Window window(800, 600, L"dx12Renderer");
+    window.showWindow();
     return 0;
 }
