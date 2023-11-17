@@ -2,7 +2,6 @@
 #define TOY_RENDERER_COMMON_H
 
 #include <string>
-#include <windows.h>
 
 using std::string;
 
