@@ -8,7 +8,9 @@ set(SOURCES src/Main.cpp
         src/Core/Window.h
         include/Common.h
         src/Core/DX.cpp
-        src/Core/DX.h)
+        src/Core/DX.h
+        src/Debug/DXDebugLayer.cpp
+        src/Debug/DXDebugLayer.h)
 
 add_executable(toy_renderer ${SOURCES})
 
