@@ -17,9 +17,9 @@ public:
     }
 
 private:
-    constexpr static const wchar_t *WINDOW_CLASS_NAME = L"dx12Renderer";
-    constexpr static const int MIN_WIDTH = 800;
-    constexpr static const int MIN_HEIGHT = 600;
+    inline static const wchar_t *WINDOW_CLASS_NAME = L"dx12Renderer";
+    inline static const int MIN_WIDTH = 800;
+    inline static const int MIN_HEIGHT = 600;
 
     HINSTANCE m_hInstance = GetModuleHandleW(nullptr);
     static HWND m_hwnd;
