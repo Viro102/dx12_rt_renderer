@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window::Window() {
+Window::Window(int width, int height, const wchar_t *title) : m_width(width), m_height(height), m_title(title) {
     WNDCLASSEXW wClassEx{
             sizeof(WNDCLASSEX),
             CS_HREDRAW | CS_VREDRAW,
@@ -21,21 +21,32 @@ Window::Window() {
     m_hwndMain = CreateWindowExW(
             WS_EX_ACCEPTFILES,
             WINDOW_CLASS_NAME,
-            L"Testing window",
-            WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
+            m_title,
+            WS_OVERLAPPEDWINDOW,
             CW_USEDEFAULT,
             CW_USEDEFAULT,
-            800,
-            600,
+            m_width,
+            m_height,
             nullptr,
             nullptr,
             m_hInstance,
             nullptr);
-
-    ShowWindow(m_hwndMain, SW_SHOWDEFAULT);
-    UpdateWindow(m_hwndMain);
 }
 
 Window::~Window() {
     DestroyWindow(m_hwndMain);
+    UnregisterClassW(WINDOW_CLASS_NAME, m_hInstance);
+}
+
+void Window::showWindow() {
+    ShowWindow(m_hwndMain, SW_SHOWDEFAULT);
+    MSG msg = {};
+    while (GetMessage(&msg, nullptr, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+}
+
+void Window::handleResize(int newWidth, int newHeight) {
+// TODO: Implement
 }
