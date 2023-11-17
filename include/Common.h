@@ -16,5 +16,7 @@
 
 #endif
 
+using Microsoft::WRL::ComPtr;
+
 
 #endif //TOY_RENDERER_COMMON_H

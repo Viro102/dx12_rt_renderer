@@ -3,10 +3,8 @@
 
 #include <Common.h>
 
-using Microsoft::WRL::ComPtr;
-
 class DX {
-    
+
 public:
     void initialize();
 
@@ -22,7 +20,7 @@ private:
     void loadAssets();
 
     // DirectX 12 objects
-    ComPtr<ID3D12Device> m_device;
+    ComPtr <ID3D12Device> m_device;
 
     // DXGI objects
 
