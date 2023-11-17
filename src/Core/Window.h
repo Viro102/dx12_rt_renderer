@@ -1,8 +1,7 @@
 #ifndef TOY_RENDERER_WINDOW_H
 #define TOY_RENDERER_WINDOW_H
 
-#include <windows.h>
-#include <iostream>
+#include <Common.h>
 
 class Window {
 
@@ -13,6 +12,9 @@ public:
 
     void showWindow();
 
+    static HWND getHwnd() {
+        return m_hwnd;
+    }
 
 private:
     constexpr static const wchar_t *WINDOW_CLASS_NAME = L"dx12Renderer";
@@ -20,7 +22,7 @@ private:
     constexpr static const int MIN_HEIGHT = 600;
 
     HINSTANCE m_hInstance = GetModuleHandleW(nullptr);
-    HWND m_hwndMain;
+    static HWND m_hwnd;
     int m_width;
     int m_height;
     const wchar_t *m_title;

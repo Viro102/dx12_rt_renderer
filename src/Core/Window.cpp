@@ -1,24 +1,19 @@
 #include "Window.h"
 
+HWND Window::m_hwnd = nullptr;
+
 Window::Window(int width, int height, const wchar_t *title) : m_width(width), m_height(height), m_title(title) {
     WNDCLASSEXW wClassEx{
-            sizeof(WNDCLASSEX),
-            CS_HREDRAW | CS_VREDRAW,
-            wndProc,
-            0,
-            0,
-            m_hInstance,
-            nullptr,
-            nullptr,
-            (HBRUSH) (COLOR_WINDOW + 1),
-            nullptr,
-            WINDOW_CLASS_NAME,
-            nullptr
+            .cbSize = sizeof(WNDCLASSEX),
+            .style = CS_HREDRAW | CS_VREDRAW,
+            .lpfnWndProc = wndProc,
+            .hInstance = m_hInstance,
+            .lpszClassName = WINDOW_CLASS_NAME,
     };
 
     RegisterClassExW(&wClassEx);
 
-    m_hwndMain = CreateWindowExW(
+    m_hwnd = CreateWindowExW(
             WS_EX_ACCEPTFILES,
             WINDOW_CLASS_NAME,
             m_title,
@@ -34,12 +29,13 @@ Window::Window(int width, int height, const wchar_t *title) : m_width(width), m_
 }
 
 Window::~Window() {
-    DestroyWindow(m_hwndMain);
+    DestroyWindow(m_hwnd);
     UnregisterClassW(WINDOW_CLASS_NAME, m_hInstance);
 }
 
 void Window::showWindow() {
-    ShowWindow(m_hwndMain, SW_SHOWDEFAULT);
+    ShowWindow(m_hwnd, SW_SHOWDEFAULT);
+
     MSG msg = {};
     while (GetMessage(&msg, nullptr, 0, 0)) {
         TranslateMessage(&msg);
