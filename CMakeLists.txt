@@ -6,7 +6,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(SOURCES src/Main.cpp
         src/Core/Window.cpp
         src/Core/Window.h
-        include/Common.h
         src/Core/DX.cpp
         src/Core/DX.h
         src/Debug/DXDebugLayer.cpp
