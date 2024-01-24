@@ -8,9 +8,9 @@ void DX::initialize() {
 void DX::loadPipeline() {
     ComPtr<IDXGIFactory6> factory;
     CreateDXGIFactory2(0, IID_PPV_ARGS(&factory));
-    D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_12_0, IID_PPV_ARGS(&m_device));
+    D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_12_0, IID_PPV_ARGS(&_device));
 }
 
 void DX::loadAssets() {
-//TODO: Implement
+    //TODO: Implement
 }

@@ -1,10 +1,8 @@
-#ifndef TOY_RENDERER_DX_H
-#define TOY_RENDERER_DX_H
+#pragma once
 
 #include <Common.h>
 
 class DX {
-
 public:
     void initialize();
 
@@ -20,10 +18,7 @@ private:
     void loadAssets();
 
     // DirectX 12 objects
-    ComPtr <ID3D12Device> m_device;
+    ComPtr<ID3D12Device> _device;
 
     // DXGI objects
-
 };
-
-#endif //TOY_RENDERER_DX_H

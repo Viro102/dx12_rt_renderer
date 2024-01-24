@@ -1,5 +1,4 @@
-#ifndef TOY_RENDERER_DXDEBUGLAYER_H
-#define TOY_RENDERER_DXDEBUGLAYER_H
+#pragma once
 
 #include <Common.h>
 
@@ -11,8 +10,8 @@ public:
 
 private:
 #ifdef _DEBUG
-    ComPtr<ID3D12Debug6> m_d3d12Debug;
-    ComPtr<IDXGIDebug1> m_dxgiDebug;
+    ComPtr<ID3D12Debug6> _d3d12Debug;
+    ComPtr<IDXGIDebug1> _dxgiDebug;
 #endif
 
     // singleton
@@ -28,7 +27,4 @@ public:
 
 private:
     DXDebugLayer() = default;
-
 };
-
-#endif //TOY_RENDERER_DXDEBUGLAYER_H
