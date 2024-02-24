@@ -1,2 +1,10 @@
+# IDE configs
 .idea
+.vscode
+
+# Cache
+.cache
+
+# Builds
 cmake-build*
+build
