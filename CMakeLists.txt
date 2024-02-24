@@ -1,9 +1,11 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.26)
+cmake_minimum_required(VERSION 3.26)
 project(toy_renderer)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(SOURCES src/Main.cpp
+set(SOURCES
+        src/Main.cpp
         src/Core/Window.cpp
         src/Core/Window.h
         src/Core/DX.cpp
