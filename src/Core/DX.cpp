@@ -12,5 +12,5 @@ void DX::loadPipeline() {
 }
 
 void DX::loadAssets() {
-    //TODO: Implement
+    // TODO: Implement
 }

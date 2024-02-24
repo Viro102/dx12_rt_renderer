@@ -3,7 +3,7 @@
 #include <Common.h>
 
 class Window {
-public:
+  public:
     Window(int width, int height, const wchar_t *title);
 
     ~Window();
@@ -12,7 +12,7 @@ public:
 
     static HWND getHwnd();
 
-private:
+  private:
     inline static const wchar_t *WINDOW_CLASS_NAME = L"dx12Renderer";
     inline static const int MIN_WIDTH = 800;
     inline static const int MIN_HEIGHT = 600;

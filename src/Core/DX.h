@@ -3,7 +3,7 @@
 #include <Common.h>
 
 class DX {
-public:
+  public:
     void initialize();
 
     void update();
@@ -12,7 +12,7 @@ public:
 
     void render();
 
-private:
+  private:
     void loadPipeline();
 
     void loadAssets();

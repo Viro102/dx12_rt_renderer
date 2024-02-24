@@ -20,8 +20,8 @@ void DXDebugLayer::shutdown() {
     if (_dxgiDebug) {
         OutputDebugStringW(L"DXGI Reports living device objects:\n");
         _dxgiDebug->ReportLiveObjects(
-            DXGI_DEBUG_ALL, DXGI_DEBUG_RLO_FLAGS(DXGI_DEBUG_RLO_DETAIL | DXGI_DEBUG_RLO_IGNORE_INTERNAL)
-        );
+            DXGI_DEBUG_ALL,
+            DXGI_DEBUG_RLO_FLAGS(DXGI_DEBUG_RLO_DETAIL | DXGI_DEBUG_RLO_IGNORE_INTERNAL));
     }
 
     _dxgiDebug->Release();

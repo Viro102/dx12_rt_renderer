@@ -2,11 +2,11 @@
 
 #define NOMINMAX
 
-#include <windows.h>
-#include <dxgi1_6.h>
 #include <d3d12.h>
-#include <wrl/client.h>
+#include <dxgi1_6.h>
 #include <iostream>
+#include <windows.h>
+#include <wrl/client.h>
 
 #ifdef _DEBUG
 
