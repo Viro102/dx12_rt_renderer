@@ -1,6 +1,9 @@
 #pragma once
 
 #include <Common.h>
+#include <backends/imgui_impl_dx12.h>
+#include <backends/imgui_impl_win32.h>
+#include <imgui.h>
 
 class Window {
   public:
@@ -27,3 +30,6 @@ class Window {
 
     static LRESULT CALLBACK wndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 };
+
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam,
+                                                             LPARAM lParam);

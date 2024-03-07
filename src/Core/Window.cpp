@@ -2,6 +2,8 @@
 
 Window::Window(int width, int height, const wchar_t *title)
     : _width(width), _height(height), _title(title) {
+
+    // Win32 window initialization
     WNDCLASSEXW wClassEx{
         .cbSize = sizeof(WNDCLASSEX),
         .style = CS_HREDRAW | CS_VREDRAW,
@@ -15,9 +17,22 @@ Window::Window(int width, int height, const wchar_t *title)
     _hwnd = CreateWindowExW(WS_EX_ACCEPTFILES, WINDOW_CLASS_NAME, _title, WS_OVERLAPPEDWINDOW,
                             CW_USEDEFAULT, CW_USEDEFAULT, _width, _height, nullptr, nullptr,
                             _hInstance, nullptr);
+
+    // IMGUI setup
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO &io = ImGui::GetIO();
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;     // Enable Docking
+    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; // Enable Multi-Viewport / Platform Windows
+
+    ImGui_ImplWin32_Init(_hwnd);
 }
 
 Window::~Window() {
+    ImGui_ImplDX12_Shutdown();
+    ImGui_ImplWin32_Shutdown();
+    ImGui::DestroyContext();
     DestroyWindow(_hwnd);
     UnregisterClassW(WINDOW_CLASS_NAME, _hInstance);
 }
@@ -35,6 +50,9 @@ void Window::showWindow() {
 HWND Window::getHwnd() { return _hwnd; }
 
 LRESULT CALLBACK Window::wndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+    if (ImGui_ImplWin32_WndProcHandler(_hwnd, uMsg, wParam, lParam))
+        return true;
+
     switch (uMsg) {
     case WM_DESTROY: {
         PostQuitMessage(0);
